@@ -10,7 +10,10 @@
 tqsdk-seasonal/
 ├── strategies/                    # 策略文件目录
 │   ├── 01_soybean_seasonal.py     # 大豆种植季节性策略
-│   └── 02_spring_festival_effect.py  # 春节前后资金面策略
+│   ├── 02_spring_festival_effect.py  # 春节前后资金面策略
+│   ├── ...                        # 更多季节性策略
+│   ├── 21_ag_multi_factor.py      # 农产品多因子截面策略
+│   └── 22_cross_commodity_hedge.py   # 跨品种对冲策略
 └── README.md
 ```
 
@@ -22,6 +25,26 @@ tqsdk-seasonal/
 |------|---------|---------|---------|--------------|---------|--------|---------|
 | 01 | 大豆种植季节性策略 | DCE.m（豆粕主力） | 空：4-6月；多：10-11月 | 南美大豆上市压力期 / 美豆新作炒作期 | MA5/MA20 金叉死叉 + RSI(14) + 量比过滤 | [01_soybean_seasonal.py](strategies/01_soybean_seasonal.py) | 2026-03-02 |
 | 02 | 春节前后资金面策略 | SHFE.rb（螺纹钢主力） | 空：春节前5日；多：节后首日 | 春节前流动性收紧 / 春节后资金回流 | 日期精确判断（内置2020-2030年数据） | [02_spring_festival_effect.py](strategies/02_spring_festival_effect.py) | 2026-03-02 |
+| 03 | 棉花种植季节性策略 | CZCE.CF（棉花主力） | 多：3-5月；空：9-11月 | 春季种植期 / 新棉上市期 | MA20 + 成交量 | [03_cotton_seasonal.py](strategies/03_cotton_seasonal.py) | 2026-03-11 |
+| 04 | 节假日效应策略 | IF（股指期货） | 节前减仓/节后做多 | 国庆/春节/五一 | 节假日日历 | [04_holiday_effect.py](strategies/04_holiday_effect.py) | 2026-03-11 |
+| 05 | 原油季节性策略 | SC（原油期货） | 多：冬季；空：夏季 | 冬季取暖需求 / 夏季出行高峰 | MA20 + RSI | [05_crude_oil_seasonal.py](strategies/05_crude_oil_seasonal.py) | 2026-03-04 |
+| 06 | 螺纹钢季节性策略 | SHFE.rb（螺纹钢主力） | 多：3-5月；空：7-8月 | 旺季施工 / 淡季累库 | MA20 + 持仓量 | [06_rb_seasonal.py](strategies/06_rb_seasonal.py) | 2026-03-04 |
+| 07 | PTA季节性策略 | CZCE.TA（PTA主力） | 多：3-5月/9-11月；空：6-8月 | 春秋旺季 / 夏季淡季 | MA20 + 成交量 | [07_ta_seasonal.py](strategies/07_ta_seasonal.py) | 2026-03-04 |
+| 08 | 橡胶季节性策略 | RU（橡胶主力） | 多：2-4月；空：7-9月 | 东南亚产胶区停割期 / 割胶旺季 | MA20 + RSI | [08_ru_seasonal.py](strategies/08_ru_seasonal.py) | 2026-03-04 |
+| 09 | 燃油季节性策略 | SHFE.bu（燃油主力） | 多：冬季；空：夏季 | 冬季取暖 / 夏季需求回落 | MA20 + 成交量 | [09_heating_oil_seasonal.py](strategies/09_heating_oil_seasonal.py) | 2026-03-04 |
+| 10 | 豆粕季节性策略 | DCE.m（豆粕主力） | 空：4-6月；多：10-12月 | 南美上市 / 美豆新作 | MA20 + RSI | [10_soybean_meal_seasonal.py](strategies/10_soybean_meal_seasonal.py) | 2026-03-04 |
+| 11 | 白银季节性策略 | AG（白银主力） | 多：1-2月/7-8月；空：5-6月 | 工业需求季节 / 投资需求 | MA20 + RSI | [11_gold_seasonal.py](strategies/11_gold_seasonal.py) | 2026-03-05 |
+| 12 | 螺纹钢季节性策略 | SHFE.rb（螺纹钢） | 多：3-5月；空：8-9月 | 建材旺季 / 产能高峰 | MA20 + 持仓量 | [12_rb_seasonal.py](strategies/12_rb_seasonal.py) | 2026-03-05 |
+| 13 | 白糖季节性策略 | CZCE.SR（白糖主力） | 多：9-11月；空：3-5月 | 新榨季缺口 / 集中上市 | MA20 + 成交量 | [13_sugar_seasonal.py](strategies/13_sugar_seasonal.py) | 2026-03-06 |
+| 14 | 棕榈油季节性策略 | DCE.p（棕榈油主力） | 多：9-11月；空：3-5月 | 增产/减产周期 | MA20 + RSI | [14_palm_oil_seasonal.py](strategies/14_palm_oil_seasonal.py) | 2026-03-06 |
+| 15 | 玉米季节性策略 | CZCE.C（玉米主力） | 多：3-5月；空：9-11月 | 种植期天气 / 收获期压力 | MA20 | [15_corn_seasonal.py](strategies/15_corn_seasonal.py) | 2026-03-09 |
+| 16 | 菜籽油季节性策略 | CZCE.OI（菜籽油主力） | 多：4-6月；空：10-12月 | 油菜籽上市周期 | MA20 + RSI | [16_rapeseed_seasonal.py](strategies/16_rapeseed_seasonal.py) | 2026-03-09 |
+| 17 | 苹果季节性策略 | CZCE.AP（苹果主力） | 多：6-8月；空：10-12月 | 夏季消费 / 收获季压力 | MA20 + 成交量 | [17_apple_seasonal.py](strategies/17_apple_seasonal.py) | 2026-03-10 |
+| 18 | 铝季节性策略 | SHFE.AL（铝主力） | 多：3-5月；空：7-9月 | 旺季需求 / 淡季累库 | MA20 + 持仓量 | [18_aluminum_seasonal.py](strategies/18_aluminum_seasonal.py) | 2026-03-10 |
+| 19 | 棉花季节性策略 | CZCE.CF（棉花） | 多：3-5月；空：9-11月 | 种植期 / 收获期 | MA20 + 成交量 | [19_cotton_seasonal.py](strategies/19_cotton_seasonal.py) | 2026-03-11 |
+| 20 | 白银季节性策略 | AG（白银期货） | 多：1-2月/7-8月；空：5-6月 | 投资/工业需求季节 | MA20 + RSI | [20_silver_seasonal.py](strategies/20_silver_seasonal.py) | 2026-03-11 |
+| 21 | 农产品多因子策略 | 豆粕/玉米/棉花/白糖 | 多因子打分 | 因子信号共振 | 动量+波动率+期限结构 | [21_ag_multi_factor.py](strategies/21_ag_multi_factor.py) | 2026-03-12 |
+| 22 | 跨品种对冲策略 | 原油-PTA/铜-铝 | 均值回归 | 产业链价差偏离 | 布林带+z-score | [22_cross_commodity_hedge.py](strategies/22_cross_commodity_hedge.py) | 2026-03-12 |
 
 ---
 
@@ -54,6 +77,44 @@ tqsdk-seasonal/
 - 止损 1.5% / 止盈 3.5%
 - 节前空头持满 5 天或节后首日强平
 - 节后多头持满 3 天平仓
+
+---
+
+### 21 — 农产品多因子截面策略 (`21_ag_multi_factor.py`)
+
+**策略逻辑**：
+- **多因子模型**：结合动量因子、波动率因子和期限结构因子构建综合打分系统
+- **因子设计**：
+  - 动量因子（20日）：动量>0 得正分，动量<0 得负分
+  - 波动率因子（20日年化）：低于15%得正分，高于25%扣分
+  - 期限结构因子：Contango得正分，Backwardation扣分
+- **持仓选择**：做多/做空得分最高/最低的品种，最多持仓2个
+- **季节过滤**：冬季（12-2月）不建议做多农产品
+
+**风控参数**：
+- 每次开仓 1 手
+- 止损 2.5% / 止盈 5%
+- 最多持仓 2 个品种
+
+---
+
+### 22 — 跨品种对冲策略 (`22_cross_commodity_hedge.py`)
+
+**策略逻辑**：
+- **产业链对冲**：基于产业链逻辑的跨品种均值回归策略
+- **交易对**：
+  - 原油-PTA（SC vs TA）：成本推动逻辑
+  - 铜-铝（CU vs AL）：需求联动逻辑
+- **信号生成**：使用布林带（20日，2倍标准差）判断价差偏离
+  - z-score > 2：做空价差（预期回归）
+  - z-score < -2：做多价差（预期回归）
+  - z-score 回归到 ±0.5 范围内时平仓
+- **产业链季节性过滤**：根据能源/化工/金属旺季调整信号强度
+
+**风控参数**：
+- 每次对冲 1 手
+- 止损 2% / 止盈 3%
+- 产业链旺季信号加权
 
 ---
 
@@ -90,6 +151,13 @@ python strategies/01_soybean_seasonal.py
 | 日期 | 更新内容 |
 |------|---------|
 | 2026-03-02 | 初始化仓库，上传策略 01（大豆季节性）和策略 02（春节资金面效应） |
+| 2026-03-04 | 新增策略 05-10：原油、螺纹钢、PTA、橡胶、燃油、豆粕季节性策略 |
+| 2026-03-05 | 新增策略 11-12：白银、螺纹钢季节性策略 |
+| 2026-03-06 | 新增策略 13-14：白糖、棕榈油季节性策略 |
+| 2026-03-09 | 新增策略 15-16：玉米、菜籽油季节性策略 |
+| 2026-03-10 | 新增策略 17-18：苹果、铝季节性策略 |
+| 2026-03-11 | 新增策略 19-20：棉花、白银季节性策略 |
+| 2026-03-12 | 新增策略 21-22：农产品多因子策略、跨品种对冲策略 |
 
 ---
 
